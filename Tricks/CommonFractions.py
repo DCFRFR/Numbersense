@@ -1,0 +1,38 @@
+import random
+import time
+questions = int(input("Question count: ").strip())
+include_greater = input("Include numerators greater than 1? (y/n): ").strip().lower()
+denominators = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 25, 40, 50]
+pool = []
+for d in denominators:
+    if include_greater == "y":
+        for n in range(1, d):
+            pool.append((n, d))
+    else:
+        pool.append((1, d))
+nums = []
+while len(nums) < questions:
+    nums = nums + random.sample(pool, len(pool))
+start_time = time.perf_counter()
+count = 1
+wrong = 0
+right = 0
+while count < questions + 1:
+    top, first = nums[count - 1]
+    question = float(input(f"What is {top} / {first}? (Round to 3 decimals): "))
+    answer = round((top/first), 3)
+    if question == answer:
+        print("Correct")
+        right = right + 1
+    else:
+        print(f"Incorrect. {top} / {first} = {answer}")
+        wrong = wrong + 1
+    count = count + 1
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time
+time_per_question = elapsed_time / questions
+print("")
+print(f"Results: {int(((questions - wrong)/questions) * 100)} percent accuracy.")
+print(f"{right} correct, {wrong} incorrect.")
+print(f"Time: {elapsed_time:.2f} seconds")
+print(f"Time per question: {time_per_question: .2f} seconds")
