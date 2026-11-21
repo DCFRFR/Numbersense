@@ -23,7 +23,7 @@ end_time = time.perf_counter()
 elapsed_time = end_time - start_time
 time_per_question = elapsed_time / questions
 print("")
-print(f"Results: {(int((questions - wrong)/questions)) * 100} percent accuracy.")
+print(f"Results: {right/questions*100:.2f}% accuracy.")
 print(f"{right} correct, {wrong} incorrect.")
 print(f"Time: {elapsed_time:.2f} seconds")
 print(f"Time per question: {time_per_question: .2f} seconds")
