@@ -8,7 +8,7 @@ right = 0
 pool = []
 while count < questions + 1:
     if len(pool) == 0:
-        pool = list(range(13,51)) #CHANGE THE FIRST NUMBER TO 13 IF YOU KNOW YOUR TIMES TABLES
+        pool = list(range(1,51)) #CHANGE THE FIRST NUMBER TO 13 IF YOU KNOW YOUR TIMES TABLES
         random.shuffle(pool)
     first = pool.pop()
     question = int(input(f"{count}. What is {first} squared?: "))
